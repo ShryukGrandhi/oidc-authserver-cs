@@ -1,0 +1,17 @@
+{
+  "name": "oidc-authserver-cs",
+  "language": "C#",
+  "tech": ["C#", ".NET 8 / ASP.NET Core", "OAuth 2.0 / OpenID Connect", "JWT (ES256/RS256)", "PKCE & TOTP MFA", "xUnit"],
+  "targets": ["C#", "authentication", "identity & security engineering", "concurrency-safe server design", "testing and benchmarking"],
+  "bullets": [
+    "Built an OAuth 2.0/OpenID Connect authorization server in C#/.NET 8: JWT signing/validation, PKCE, TOTP MFA, PBKDF2 and key rotation on System.Security.Cryptography",
+    "Implemented refresh-token rotation with reuse detection and auth-code replay revocation; 0 of 4,000 concurrent 8-thread replay trials left a usable token",
+    "Benchmarked authentication paths: 57,062 code+PKCE token flows/sec on 28 threads, ES256 JWT validation p50 91.7 µs; 130 xUnit tests incl. RFC vectors"
+  ],
+  "summary": {
+    "what": "An OAuth 2.0 / OpenID Connect authorization server in C# (.NET 8) with JWT access and ID tokens, authorization code + PKCE, refresh-token rotation, client credentials, introspection, revocation, password + TOTP login with lockout, and a key ring with JWKS publication.",
+    "how": "The protocol logic is in a transport-independent core library built on System.Security.Cryptography, with no JWT or identity packages. An ASP.NET Core minimal API is the HTTP host. Time is injected through TimeProvider so expiry is tested deterministically. Bearer secrets are stored only as hashes. Single-use semantics come from atomic exchanges, not locks. The suite has 130 xUnit tests, including RFC test vectors and HTTP integration tests, and a separate benchmark measures throughput, latency, and race safety.",
+    "hardest": "Making replay detection correct under concurrency. A replayed authorization code can arrive while the first redemption is still minting tokens, so the first redeemer re-checks a compromised flag after recording what it issued and revokes those tokens itself. Refresh rotation uses the same pattern for revocations that race with a rotation. The benchmark's race check runs 8 threads against one credential for 2,000 trials each to confirm that no usable token survives.",
+    "say": "I wrote an OAuth and OpenID Connect server in C# from the crypto primitives up, to learn where authentication actually breaks: JWT algorithm confusion, code replay, refresh-token theft, and races. Refresh tokens rotate with family-based reuse detection, and a replayed code revokes everything it produced. My benchmark has 8 threads race the same credential 2,000 times per check, with zero trials leaving a usable token. A full code-plus-PKCE exchange takes about 200 microseconds, almost all of it ES256 signing."
+  }
+}
