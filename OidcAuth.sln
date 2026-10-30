@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7383C749-E5C6-4979-8153-9F8FEC9F50C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OidcAuth.Core", "src\OidcAuth.Core\OidcAuth.Core.csproj", "{97958E0D-CEF3-4981-AE82-B534652E556B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OidcAuth.Host", "src\OidcAuth.Host\OidcAuth.Host.csproj", "{8AB794D7-D0D6-4772-A4EB-318F1686F113}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DFC399E5-28EC-497D-ABC3-AF811E9B1313}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OidcAuth.Tests", "tests\OidcAuth.Tests\OidcAuth.Tests.csproj", "{E805DF33-A4EA-49E9-A6F1-46F2D9EAFA04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bench", "bench", "{CE683398-AA0E-4F2B-8A91-E7B369AE0849}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OidcAuth.Bench", "bench\OidcAuth.Bench\OidcAuth.Bench.csproj", "{213275C3-5835-4554-A607-DE4F15C6FCBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97958E0D-CEF3-4981-AE82-B534652E556B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97958E0D-CEF3-4981-AE82-B534652E556B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97958E0D-CEF3-4981-AE82-B534652E556B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97958E0D-CEF3-4981-AE82-B534652E556B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AB794D7-D0D6-4772-A4EB-318F1686F113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AB794D7-D0D6-4772-A4EB-318F1686F113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AB794D7-D0D6-4772-A4EB-318F1686F113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AB794D7-D0D6-4772-A4EB-318F1686F113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E805DF33-A4EA-49E9-A6F1-46F2D9EAFA04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E805DF33-A4EA-49E9-A6F1-46F2D9EAFA04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E805DF33-A4EA-49E9-A6F1-46F2D9EAFA04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E805DF33-A4EA-49E9-A6F1-46F2D9EAFA04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{213275C3-5835-4554-A607-DE4F15C6FCBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{213275C3-5835-4554-A607-DE4F15C6FCBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{213275C3-5835-4554-A607-DE4F15C6FCBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{213275C3-5835-4554-A607-DE4F15C6FCBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{97958E0D-CEF3-4981-AE82-B534652E556B} = {7383C749-E5C6-4979-8153-9F8FEC9F50C5}
+		{8AB794D7-D0D6-4772-A4EB-318F1686F113} = {7383C749-E5C6-4979-8153-9F8FEC9F50C5}
+		{E805DF33-A4EA-49E9-A6F1-46F2D9EAFA04} = {DFC399E5-28EC-497D-ABC3-AF811E9B1313}
+		{213275C3-5835-4554-A607-DE4F15C6FCBA} = {CE683398-AA0E-4F2B-8A91-E7B369AE0849}
+	EndGlobalSection
+EndGlobal
