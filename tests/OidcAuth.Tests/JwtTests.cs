@@ -213,6 +213,15 @@ public class JwtTests
     }
 
     [Fact]
+    public void Header_is_serialized_without_html_escaping()
+    {
+        using var key = EcdsaSigningKey.Generate();
+        string token = JwtEncoder.Encode(Claims(), key, "at+jwt");
+        string header = System.Text.Encoding.UTF8.GetString(Base64Url.Decode(token[..token.IndexOf('.')]));
+        Assert.Equal($"{{\"alg\":\"ES256\",\"typ\":\"at+jwt\",\"kid\":\"{key.Kid}\"}}", header);
+    }
+
+    [Fact]
     public void Rsa_thumbprint_matches_rfc7638_example()
     {
         const string n =

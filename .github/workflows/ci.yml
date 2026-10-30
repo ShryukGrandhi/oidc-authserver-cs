@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore OidcAuth.sln
+
+      - name: Build (warnings are errors)
+        run: dotnet build OidcAuth.sln -c Release --no-restore
+
+      - name: Test
+        run: dotnet test OidcAuth.sln -c Release --no-build --logger "console;verbosity=normal"
+
+      - name: Benchmark (quick)
+        run: dotnet run -c Release --no-build --project bench/OidcAuth.Bench -- --quick
