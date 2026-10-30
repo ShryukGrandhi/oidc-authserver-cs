@@ -2,6 +2,7 @@ using System.Text.Json.Nodes;
 using OidcAuth.Core;
 using OidcAuth.Core.Jwt;
 using OidcAuth.Core.OAuth;
+using OidcAuth.Core.Passwords;
 using OidcAuth.Core.Users;
 using OidcAuth.Host;
 
@@ -11,7 +12,8 @@ var authConfig = builder.Configuration.GetSection("Auth");
 builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddSingleton(sp => new AuthServer(
     new AuthServerOptions { Issuer = authConfig["Issuer"] ?? "http://localhost:5080" },
-    sp.GetRequiredService<TimeProvider>()));
+    sp.GetRequiredService<TimeProvider>(),
+    hasher: new PasswordHasher(authConfig.GetValue("PasswordIterations", PasswordHasher.DefaultIterations))));
 builder.Services.AddHostedService<HousekeepingService>();
 
 var app = builder.Build();
